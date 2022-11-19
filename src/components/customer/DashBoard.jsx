@@ -6,10 +6,10 @@ import PostProcessingItems from './PostProcessingItems';
 import ManagePostForFreelancer from '../freelancer/ManagePostForFreelancer';
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
-/* import { getMyJobsAction, getMyJobsProcessingAction } from '../../store/entities/job'; */
 import { handleDate } from '../../common/lib';
 import { convert2arr } from '../../common/lib';
 import { Pagination } from 'react-bootstrap';
+import { getMyJobsAction } from '../../store/entities/job';
 
 const DashBoard = () => {
     const dispatch = useDispatch()
@@ -18,21 +18,20 @@ const DashBoard = () => {
         pageShowOpen: 1
     })
 
-    /* const { resultsOpen, categoriesOpen, offersOpen, totalResultsOpen, totalPagesOpen } = useSelector(state => state.job.getMyJobs)
-    const { resultsProcessing, categoriesProcessing, totalResultsProcessing } = useSelector(state => state.job.getMyJobs) */
+    const {jobs, length, totalPages, applies} = useSelector(state => state.job.getMyJobs)
 
     const changePageOpen = (page) => {
         setInfo({
             ...info,
             pageShowOpen: page
         })
-        /* dispatch(getMyJobsAction({ limit: 3, page })) */
+        dispatch(getMyJobsAction({num: 3, page:page}))
     }
 
     useEffect(() => {
-        /* dispatch(getMyJobsAction({ limit: 3, page: 1 }))
-        dispatch(getMyJobsProcessingAction({ limit: 3, page: 1 })) */
-    }, [])
+        dispatch(getMyJobsAction({num: 3, page:1}))
+    }, [dispatch])
+
 
     return (
         <div className='dashboard-manage'>
@@ -43,7 +42,7 @@ const DashBoard = () => {
                 <div className='dashboard-manage__content'>
                     <div className='m-3'>
                         <h2>
-                            Posted Jobs (<span></span>)
+                            Posted Jobs (<span>{length}</span>)
                         </h2>
                         <div className='dashboard-manage__content__postlist'>
                             <div className='dashboard-manage__content__postlist__table'>
@@ -58,14 +57,14 @@ const DashBoard = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {/* {resultsOpen && resultsOpen.map((job, index) => (
+                                        {jobs && jobs.map((job, index) => (
                                             <tr key={index}>
                                                 <th scope='row'>
                                                     <ItemsDetailControl job={job}></ItemsDetailControl>
                                                 </th>
-                                                <td>{categoriesOpen[index].name}</td>
+                                                <td>dsafsdaf</td>
                                                 <td>{handleDate(job.createdAt)}</td>
-                                                <td>{offersOpen[index]}</td>
+                                                <td>{applies[index]}</td>
                                                 <td>
                                                     <div>
                                                         <Button variant="primary" className="btn-delete-post">
@@ -74,16 +73,16 @@ const DashBoard = () => {
                                                     </div>
                                                 </td>
                                             </tr>
-                                        ))} */}
+                                        ))}
                                     </tbody>
                                 </table>
-                                {/* {totalPagesOpen && (
+                                {totalPages && (
                                     <Pagination className='mt-2'>
-                                        {convert2arr(totalPagesOpen).map((item) => (
+                                        {convert2arr(totalPages).map((item) => (
                                             <Pagination.Item onClick={() => changePageOpen(item + 1)} active={item + 1 === info.pageShowOpen} key={item}>{item + 1}</Pagination.Item>
                                         ))}
                                     </Pagination>
-                                )} */}
+                                )}
                             </div>
                         </div>
                     </div>

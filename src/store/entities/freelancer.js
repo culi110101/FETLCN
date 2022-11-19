@@ -92,10 +92,58 @@ export const editFreelancerSlice = createSlice({
     }
 })
 
+// get info freelancer
+const initStateGetInfoFreelancer = {
+    loading: false,
+    userShow: {},
+    freelancer: {}
+}
+
+export const getInfoFreelancerAction = createAsyncThunk(
+    'get info freelancer',
+    async (id) => {
+        try{
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('job')}`
+                }
+            }
+            const {data} = await axios.get(`${apiUrl}/freelancer/info?id=${id}`)
+            console.log(data)
+            return data
+        }
+        catch(error){
+            console.log(error)
+            return error.response.data
+        }
+    }
+)
+
+export const getInfoFreelancerSlice = createSlice({
+    name: 'get info freelancer',
+    initialState: initStateGetInfoFreelancer,
+    extraReducers: (builder) => {
+        builder.addCase(getInfoFreelancerAction.pending, (state) => {
+            state.loading = true
+        })
+        builder.addCase(getInfoFreelancerAction.fulfilled, (state, data) => {
+            state.loading = false
+            state.userShow = data.payload.user
+            state.freelancer = data.payload.freelancer
+        })
+        builder.addCase(getInfoFreelancerAction.rejected, (state, data) => {
+            state.loading = false
+            state.success = false
+            state.message = data.payload.message
+        })
+    }
+})
+
 // reducer
 const freelancerReducer = combineReducers({
     registerFreelancer: registerFreelancerSlice.reducer,
-    editFreelancer: editFreelancerSlice.reducer
+    editFreelancer: editFreelancerSlice.reducer,
+    getInfoFreelancer: getInfoFreelancerSlice.reducer
 })
 
 export default freelancerReducer

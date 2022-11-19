@@ -4,23 +4,26 @@ import UserDetail from './UserDetail';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { handleDate } from '../../common/lib';
+import { getAppliedsByJobAction } from '../../store/entities/applied';
+
 const FreelancerApply = ({ job }) => {
 
     const dispatch = useDispatch()
 
-    const { offers, count } = useSelector(state => state.job.getOffersByJob)
+    const { applies, length } = useSelector(state => state.applied.getAppliedsByJob)
 
     useEffect(() => {
+        console.log(job)
         if (job) {
-            /* dispatch(getOffersByJobAction(job.id)) */
+            dispatch(getAppliedsByJobAction({jobId: job.id, num:3, page:1}))
         }
-    }, [job])
+    }, [job, dispatch])
 
     return (
         <div className='freelancerapply__content'>
             <div className=''>
                 <h4>
-                    Freelancer Applied (<span>{count}</span>)
+                    Freelancer Applied (<span>{length}</span>)
                 </h4>
                 <div className='freelancerapply__content__postlist'>
                     <div className='freelancerapply__content__postlist__table'>
@@ -34,16 +37,15 @@ const FreelancerApply = ({ job }) => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {offers && offers.map((offer, index) => (
+                                {applies && applies.map((apply, index) => (
                                     <tr key={index}>
                                         <th scope='row'>
-                                            <UserDetail freelancer={offer.freelancer}></UserDetail>
+                                            <UserDetail freelancer={apply.freelancer}></UserDetail>
                                         </th>
-                                        <td>{handleDate(offer.createdAt)}</td>
+                                        <td>{handleDate(apply.appliedAt)}</td>
                                         <td>
                                             <div className="d-flex justify-content-center profileuser__information__detail__star-rating--start">
-                                                {offer.freelancer.rating.stars} 
-                                                <label htmlFor="start1" title="1 start">☆</label>
+                                                4
                                             </div>
                                         </td>
                                         <td>

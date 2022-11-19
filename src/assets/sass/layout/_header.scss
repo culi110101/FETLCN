@@ -81,7 +81,7 @@ header {
                                 box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
                                 border-radius: 0px 0px 8px 8px ;
                   
-                                a {
+                                div {
                                     line-height: 38px;
                                     color: rgba(60, 60, 67, 0.6);
                                     text-transform: capitalize;
@@ -92,7 +92,7 @@ header {
                                     }
                                 }
                                 li:last-child{
-                                    a{
+                                    div{
                                         color: #c23737;
                                     }
                                 }

@@ -14,7 +14,7 @@ const ItemsDetailControl = ({ job }) => {
 
     
 
-
+    console.log(job)
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -70,11 +70,12 @@ const ItemsDetailControl = ({ job }) => {
                                                             <i></i>
                                                             {/* số tiền target của job */}
                                                             <p className='itemsdetailcontrol__price--number'>
-                                                                <span>{job.minPrice}</span>
+                                                                {/* <span>{job.minPrice}</span>
                                                                 <span>-</span>
                                                                 <span>{job.maxPrice}</span>
                                                                 &nbsp;
-                                                                Point
+                                                                Point */}
+                                                                <span>{job.price.toLocaleString()} $ </span>
                                                             </p>
                                                         </div>
                                                         <div className=''>
@@ -82,7 +83,7 @@ const ItemsDetailControl = ({ job }) => {
                                                                 <span>{handleDate(job.startDate)}</span>
                                                                 &nbsp;
                                                                 End day: &nbsp;
-                                                                <span>{handleDate(job.endDate)}</span>
+                                                                <span>{handleDate(job.expireDate)}</span>
                                                             </p>
                                                         </div>
                                                     </div>
@@ -118,8 +119,9 @@ const ItemsDetailControl = ({ job }) => {
                                             <TaskList></TaskList>
                                             <FreelancerApply></FreelancerApply> */}
                                         {job && <DecriptionJob job={job}></DecriptionJob>}
-                                        {job && <TaskList job={job}></TaskList>}
                                         {job && <FreelancerApply job={job}></FreelancerApply>}
+                                        {/* {job && <TaskList job={job}></TaskList>}
+                                        {job && <FreelancerApply job={job}></FreelancerApply>} */}
                                         </div>
                                     </div>
                                 </div>

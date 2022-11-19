@@ -100,19 +100,20 @@ const initStateGetAppliedsByJob = {
     loading: false,
     success: false,
     message: '',
-    applieds: []
+    applies: [],
+    length: 0
 }
 
 export const getAppliedsByJobAction = createAsyncThunk(
     'get applieds',
-    async ({num, page}) => {
+    async ({jobId, num, page}) => {
         try{
             const config = {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('job')}`
                 }
             }
-            const {data} = await axios.delete(`${apiUrl}/applied/myJob?page=${page}&num=${num}`, config)
+            const {data} = await axios.get(`${apiUrl}/applied/myJob/${jobId}?page=${page}&num=${num}`, config)
             console.log(data)
             return data
         }
@@ -132,7 +133,8 @@ export const getAppliedsByJobSlice = createSlice({
         builder.addCase(getAppliedsByJobAction.fulfilled, (state, data) => {
             state.loading = false
             state.success = data.payload.success
-            state.applieds = data.payload.applies
+            state.applies = data.payload.applies
+            state.length = data.payload.length
         })
         builder.addCase(getAppliedsByJobAction.rejected, (state, data) => {
             state.loading = false

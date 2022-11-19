@@ -64,7 +64,7 @@ const Login = () => {
             })
             return
         }
-        if (!checkLengthPassword(loginData.password)) {
+        /* if (!checkLengthPassword(loginData.password)) {
             swal({
                 title: "Error",
                 text: "Password must be at least 6 characters",
@@ -72,7 +72,7 @@ const Login = () => {
                 dangerMode: true,
             })
             return
-        }
+        } */
         dispatch(loginAction(loginData))
     };
 
@@ -93,6 +93,7 @@ const Login = () => {
                 icon: "success",
                 dangerMode: false,
             }) 
+            window.location.reload()
         }
     }, [success])
 
