@@ -7,22 +7,20 @@ import { useEffect } from 'react';
 import { handleDate } from '../../common/lib';
 import Offer from '../common/Offer';
 /* import { getTasksByJobAction } from '../../store/entities/task'; */
-
+import { findJobByIdAction } from '../../store/entities/job';
 const JobDetails = () => {
     const dispatch = useDispatch()
 
     let [searchParams, setSearchParams] = useSearchParams();
 
-    /* const { job, user } = useSelector(state => state.job.getJobById)
-    const {tasks} = useSelector(state => state.task.getTasksByJob) */
-    const job = null
+    const {job} = useSelector(state => state.job.findJobById)
+
     useEffect(() => {
         const id = searchParams.get('id')
-        /* if (id) {
-            dispatch(getJobByIdAction(id))
-            dispatch(getTasksByJobAction(id))
-        } */
-    }, [])
+        if (id) {
+            dispatch(findJobByIdAction(id))
+        }
+    }, [dispatch])
 
 
 
@@ -39,7 +37,7 @@ const JobDetails = () => {
                                             <img className='jobdetail__content__heading__right--avatar pe-4 pb-4' src={Avatar}></img>
                                             <div>
                                                 <h3 className='jobdetail__content__heading__right--header'>
-                                                    {/* {job.name} */}
+                                                    {job.name}
                                                 </h3>
                                                 {/* tên người đăng */}
                                                 <p className='jobdetail__content__heading__right--name'>
@@ -64,19 +62,20 @@ const JobDetails = () => {
                                                 <i></i>
                                                 {/* số tiền target của job */}
                                                 <p className='jobdetail__price--number'>
-                                                    <span>{job.minPrice}</span>
+                                                    {/* <span>{job.minPrice}</span>
                                                     <span>-</span>
                                                     <span>{job.maxPrice}</span>
                                                     &nbsp;
-                                                    Point
+                                                    Point */}
+                                                    <span>{job.price} $</span>
                                                 </p>
                                             </div>
                                             <div className=''>
                                                 <p className='jobdetail--timeforjob'>Start day: &nbsp;
-                                                    <span>{/* {handleDate(job.startDate)} */}</span>
+                                                    <span>{handleDate(job.startDate)}</span>
                                                     &nbsp;
                                                     End day: &nbsp;
-                                                    <span>{/* {handleDate(job.endDate)} */}</span>
+                                                    <span>{handleDate(job.expireDate)}</span>
                                                 </p>
                                             </div>
                                         </div>
@@ -87,7 +86,7 @@ const JobDetails = () => {
                                         <div className='jobdetail__content__body__decription mb-5'>
                                             <h4 className='jobdetail__content__body__decription--heading mb-4'>Job Description</h4>
                                             <p className='jobdetail__content__body__decription--detail'>
-                                                {/* {job.description} */}
+                                                {job.description}
                                             </p>
                                         </div>
                                         <div className='jobdetail__content__body__tast mb-5'>

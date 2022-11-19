@@ -2,20 +2,21 @@ import React from 'react'
 import JobItems from './JobItems'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-
+import { getJobsAction } from '../../store/entities/job'
 
 const FeaturedJobs = () => {
 
   const dispatch = useDispatch()
 
 
-
+  const {jobs, categories} = useSelector(state => state.job.getJobs)
   
 
 
   useEffect(() => {
-    
-  }, [])
+    console.log("ok")
+    dispatch(getJobsAction({num: 3, page:1}))
+  }, [dispatch])
 
 
 
@@ -28,17 +29,11 @@ const FeaturedJobs = () => {
         </div>
       </div>
       <ul>
-        {/* {jobs && jobs.map((item, index) => (
+        {(jobs && categories) && jobs.map((item, index) => (
           <li key={index} className='text-center'>
-            <JobItems job={item} category={categories[index]}></JobItems>
+            <JobItems job={item} categories={categories[index]}></JobItems>
           </li>
-        ))} */}
-        {/* <li className='d-flex justify-content-center'>
-            <JobItems></JobItems>
-          </li>
-          <li className='d-flex justify-content-center'>
-            <JobItems></JobItems>
-          </li> */}
+        ))}
       </ul>
     </div>
   )

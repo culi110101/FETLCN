@@ -23,6 +23,14 @@ export const getProfileAction = createAsyncThunk(
                 }
             }
             const {data} = await axios.get(`${apiUrl}/users/profile`, config)
+            if (data.user){
+                if (data.employer){
+                    localStorage.setItem('role', "Employer")
+                }
+                else{
+                    localStorage.setItem('role', "Freelancer")
+                }
+            }
             console.log(data)
             return data
         }
