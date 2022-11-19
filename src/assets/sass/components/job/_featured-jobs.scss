@@ -1,0 +1,24 @@
+.featuredjobs {
+    margin-top: 120px;
+    margin-bottom: 120px;
+    &__content {
+        margin-bottom: 64px;
+        max-width: 506px;
+        &--header {
+            font-size: 3rem;
+            line-height: 1.25;
+            letter-spacing: -.48px;
+            color: #2b3940;
+            margin-bottom: 1.25rem;
+            font-weight: 700;
+        }
+
+        &--decription {
+            padding: 0rem 1rem;
+            font-size: 1.125rem;
+            line-height: 1.66;
+            letter-spacing: -.09px;
+            color: #6b6e6f;
+        }
+    }
+}

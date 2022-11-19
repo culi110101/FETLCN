@@ -1,0 +1,89 @@
+.freelancerapply__content {
+    width: 100%;
+    margin-top: 3rem;
+
+    h4 {
+        font-weight: 700;
+        color: #2b3940;
+        margin-bottom: 16px;
+        font-size: 24px;
+    }
+
+    &__postlist {
+        width: 100%;
+        background-color: white;
+
+        &__table {
+            width: 100%;
+
+            &>table {
+                width: 100%;
+
+                &>thead {
+                    &>tr {
+                        &>th {
+                            font-size: 1.25rem;
+                            line-height: 1.625;
+                            letter-spacing: -.08px;
+                            color: #2b3940;
+                            text-transform: uppercase;
+                        }
+                    }
+                }
+
+                &>tbody {
+                    border: solid 1px #c7cdd1;
+                    
+                    
+                    &>tr {
+                        padding-left:1rem ;
+                        padding-right:1rem ;
+
+                        th,
+                        td,
+                        a {
+                            padding-top: 0.2rem;
+                            padding-bottom: 0.2rem;
+                            font-size: 1.1rem;
+                            line-height: 1.625;
+                            letter-spacing: -.08px;
+                            font-weight: 600;
+                            color: #2b3940;
+                        }
+
+                        a {
+                            font-weight: 700;
+                        }
+
+                        td {
+                            opacity: 0.8;
+
+                            .btn-contact-post,.btn-reject-post {
+                                background-color: white;
+                                font-weight: 600;
+                                border: none;
+                                text-transform: uppercase;
+                                font-size: 1.1rem;
+                                &:hover{
+                                    background-color: white;
+                                }
+                            }
+                            .btn-contact-post{
+                                color:#00b074 ;
+                                &:hover{
+                                    color:#00b074 ;
+                                }
+                            }
+                            .btn-reject-post{
+                                color:rgb(206, 50, 50) ;
+                                &:hover{
+                                    color:rgb(206, 50, 50) ;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

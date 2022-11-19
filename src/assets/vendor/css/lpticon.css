@@ -1,0 +1,76 @@
+@charset "UTF-8";
+
+[data-icon]:before {
+  font-family: "lptech-font" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="lp-"]:before,
+[class*=" lp-"]:before {
+  font-family: "lptech-font" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.lp-arrow-down:before {
+  content: "\63";
+}
+.lp-bell:before {
+  content: "\64";
+}
+.lp-bookmark:before {
+  content: "\65";
+}
+.lp-check-1:before {
+  content: "\66";
+}
+.lp-close:before {
+  content: "\67";
+}
+.lp-design:before {
+  content: "\68";
+}
+.lp-develop:before {
+  content: "\69";
+}
+.lp-eye:before {
+  content: "\6a";
+}
+.lp-eyeoff:before {
+  content: "\6b";
+}
+.lp-fb-1:before {
+  content: "\6c";
+}
+.lp-linkendln:before {
+  content: "\6d";
+}
+.lp-location-1:before {
+  content: "\6e";
+}
+.lp-money:before {
+  content: "\6f";
+}
+.lp-search-1:before {
+  content: "\70";
+}
+.lp-web:before {
+  content: "\71";
+}
+.lp-web-develop:before {
+  content: "\72";
+}

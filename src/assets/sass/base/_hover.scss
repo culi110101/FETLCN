@@ -1,0 +1,134 @@
+$defaultDuration: .3s;
+$primaryColour: #ececec;
+$secondaryColour: #666;
+$shadowColour: rgba(0, 0, 0, .6);
+
+@mixin hideTapHighlightColor() {
+    //Prevent highlight colour when element is tapped
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+@mixin hardwareAccel() {
+    //Improve performance on mobile/tablet devices
+    transform: translateZ(0);
+}
+
+@mixin improveAntiAlias() {
+    //Improve aliasing on mobile/tablet devices
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+
+/* Tracking in Expand */
+@keyframes tracking-in-expand {
+    0% {
+        letter-spacing: -0.5em;
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 0.6;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.tracking-in-expand {
+    -webkit-animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+    animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+}
+
+/* Pulse */
+@keyframes pulse {
+	25% {
+		transform: scale(1.02);
+	}
+
+	75% {
+		transform: scale(.98);
+	}
+}
+
+.pulse {
+	display: inline-block;
+
+	@include hideTapHighlightColor();
+	@include hardwareAccel();
+	@include improveAntiAlias();
+
+	&:hover {
+		animation-name: pulse;
+		animation-duration: 1s;
+		animation-timing-function: linear;
+		animation-iteration-count: infinite;
+	}
+}
+/* Jittery */
+.jittery {
+    animation: jittery 4s infinite;
+}
+
+@keyframes jittery {
+    5%,
+    50% {
+        transform: scale(1);
+    }
+    10% {
+        transform: scale(0.9);
+    }
+    15% {
+        transform: scale(1.05);
+    }
+    20% {
+        transform: scale(1.05) rotate(-5deg);
+    }
+    25% {
+        transform: scale(1.05) rotate(5deg);
+    }
+    30% {
+        transform: scale(1.05) rotate(-3deg);
+    }
+    35% {
+        transform: scale(1.05) rotate(2deg);
+    }
+    40% {
+        transform: scale(1.05) rotate(0);
+    }
+}
+/* Pulse Grow */
+@keyframes pulse-grow {
+	to {
+		transform: scale(1.1);
+	}
+}
+
+.pulse-grow {
+	display: inline-block;
+
+	@include hideTapHighlightColor();
+	@include hardwareAccel();
+	@include improveAntiAlias();
+
+	&:hover {
+		animation-name: pulse-grow;
+		animation-duration: .5s;
+		animation-timing-function: linear;
+		animation-iteration-count: infinite;
+		animation-direction: alternate;
+	}
+}
+/* Grow */
+.grow {
+	display: inline-block;
+	transition-duration: $defaultDuration;
+	transition-property: transform;
+
+	@include hideTapHighlightColor();
+	@include hardwareAccel();
+	@include improveAntiAlias();
+
+	&:hover {
+		transform: scale(1.1);
+	}
+}

@@ -1,0 +1,42 @@
+.searchlist {
+    margin-top: 7rem;
+
+    .searchlist__content {
+        label {
+            padding-bottom: 1.5rem;
+            color: #6b6e6f;
+            font-size: 1.5rem;
+            line-height: 2;
+            letter-spacing: -.08px;
+
+            &>span {
+                color: #4a4c4d;
+            }
+        }
+    }
+
+    .filter__jobtype,
+    .filter__salary,
+    .filter__post-time {
+        p {
+            padding-bottom: .5rem;
+            color: #2b3940;
+            font-size: 1.5rem;
+            line-height: 2;
+            letter-spacing: -.08px;
+            font-weight: 700;
+        }
+
+        label {
+            font-size: 16px;
+            color: #2b3940;
+            margin-left: 0.5rem;
+        }
+
+        .filter__jobtype--items,
+        .filter__salary--items,
+        .filter__post-time--items {
+            margin-bottom: 1rem;
+        }
+    }
+}

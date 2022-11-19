@@ -1,0 +1,33 @@
+.home-baner {
+    z-index: 1;
+    position: relative !important;
+    padding-top: 8rem;
+    background-color: #edf8f5 !important;
+
+    &__img {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    &__content {
+        padding: 6.25rem 1rem 14.5rem 1rem;
+
+        &--heading {
+            font-size: 3.75rem;
+            line-height: 1.2;
+            letter-spacing: -.9px;
+            color: #2b3940 !important;
+            margin-bottom: 1.875rem !important;
+            font-weight: 700;
+            margin-top: 0;
+        }
+
+        &--subheading {
+            font-size: 1.25rem;
+            line-height: 1.66;
+            letter-spacing: -.09px;
+            opacity: 0.65;
+        }
+    }
+}

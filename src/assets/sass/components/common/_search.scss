@@ -1,0 +1,54 @@
+.search-component {
+    width: inherit;
+    background-color: #fff;
+    padding: 20px 20px;
+    border-radius: 0.5rem!important;
+    @include max-width-768{
+        padding: 8px 8px;
+    }
+
+    &__input {
+        width: calc(100% - 160px);
+
+        input {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            color: #6b6e6f;
+            padding-left: 3.125rem !important;
+            padding: 0.75rem 0.9375rem;
+            font-size: 1.25rem;
+            font-weight: 400;
+            line-height: 1.88;
+            background-color: #fff;
+            background-clip: padding-box;
+            &:focus-visible{
+                outline: none
+            }
+            @include max-width-768{
+                padding: 0.5rem !important;
+            }
+        }
+        @include max-width-768{
+            width: calc(100% - 90px);
+        }
+    }
+
+    &__btn {
+        @include createButton(20px, 24px, white, #00b074, #00b074);
+        border: none;
+        width: 160px;
+        font-size: 1.25rem;
+        @include max-width-768{
+            padding: 0.5rem !important;
+            width: 90px;
+        }
+    }
+}
+
+.transform-for-serch {
+    position: absolute;
+    bottom: 0;
+    transform: translateY(50%);
+    width: 100%;
+}

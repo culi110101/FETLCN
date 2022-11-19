@@ -1,0 +1,51 @@
+.footer {
+    background-color: #2b3940;
+
+    &__content {
+        padding: 60px 0px;
+
+        svg {
+            width: 250px;
+            filter: brightness(0) invert(1);
+        }
+
+        &__contact {
+            display: grid;
+            place-items: center;
+            label {
+                display: block;
+                font-size: 20px;
+                font-weight: 700;
+                color: white;
+            }
+
+            .email-for-contact {
+                font-size: 20px;
+                font-weight: 700;
+                color: #00b074;
+            }
+        }
+
+        .content__nav {
+            &__list {
+                &__item {
+                    &--header {
+                        margin-bottom: 24px;
+                        color: #00b074;
+                        font-size: 20px;
+                        font-weight: 700;
+                    }
+
+                    .nav-item {
+                        margin-bottom: 1rem;
+
+                        &>a {
+                            padding: 0;
+                            color: white;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

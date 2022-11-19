@@ -1,0 +1,38 @@
+.decriptionjob{
+    // padding: 30px;
+            p,
+            li {
+                font-size: 1rem;
+                line-height: 2.5;
+                letter-spacing: -.08px;
+                color: #2b3940 !important;
+            }
+
+            &__decription {
+                margin-bottom: 1.5rem;
+            }
+            &__tasklist{
+                &__items{
+                    width: 100%;
+                    overflow: hidden;
+                    column-count: 3;
+                    column-gap: 16px;
+                    column-fill: auto;
+        
+                    &--detail {
+                        margin-bottom: 16px;
+                        width: 100%;
+                        line-height: 1.5 !important;
+                    }
+        
+                    @include max-width-576() {
+                        column-gap: 8px;
+        
+                        .items {
+                            display: inline-block;
+                            margin-bottom: 8px;
+                        }
+                    }
+                }
+            }
+}

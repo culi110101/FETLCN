@@ -1,0 +1,81 @@
+.review {
+    margin: 1rem 0rem;
+
+    &__content {
+        background-color: white;
+        padding: 1rem;
+        border-radius: 16px;
+        &__heading {
+            &--avatar {
+                width: 56px;
+                height: 56px;
+                border-radius: 50%;
+                margin: auto 1rem;
+            }
+
+            &--name {
+                font-size: 22px;
+                margin-bottom: 0;
+            }
+
+            &__star-rating {
+                &--start {
+
+                    &>label {
+                        color: #FFB906;
+                        position: relative;
+                        width: 1em;
+                        line-height: 30px;
+                        font-size: 30px;
+                        color: #FFD600;
+                        cursor: pointer;
+                        margin: 0;
+
+                        &::before {
+                            content: "★";
+                            position: absolute;
+                            opacity: 1;
+                            line-height: 30px;
+                        }
+
+                        &:hover~label:before {
+                            opacity: 0 !important
+                        }
+                    }
+
+                    &>input {
+                        display: none
+                    }
+
+                    &>input:checked~label:before {
+                        opacity: 1
+                    }
+
+                    &:hover>input:checked~label:before {
+                        opacity: 0.4
+                    }
+
+                }
+            }
+
+            &--date {
+                font-size: 1rem;
+                line-height: 1.625;
+                letter-spacing: -.08px;
+                color: #2b3940;
+                opacity: 0.8;
+            }
+        }
+
+        &__decription {
+            padding: 16px;
+
+            p {
+                font-size: 1rem;
+                line-height: 1.8;
+                letter-spacing: -.08px;
+                color: #2b3940 !important;
+            }
+        }
+    }
+}

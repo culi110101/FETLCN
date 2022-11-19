@@ -1,0 +1,96 @@
+.profileuser__information {
+    margin-bottom: 16px;
+    padding: 30px;
+    background-color: white;
+    border-radius: 12px;
+    height: fit-content;
+
+    &__heading {
+        border-bottom: solid 1px #e1e4e6;
+        text-align: center;
+
+        img {
+            border-radius: 50%;
+            margin-bottom: 1.5rem;
+        }
+
+        &--name {
+            font-size: 1.5rem;
+            line-height: 1.62;
+            letter-spacing: -.21px;
+            color: #2b3940;
+            font-weight: 600;
+        }
+
+        &--career {
+            font-size: 1rem;
+            line-height: 1.625;
+            letter-spacing: -.08px;
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+    }
+
+    &__detail {
+        &--header {
+            font-weight: 600;
+            font-size: 1.325rem;
+            line-height: 1.66;
+            letter-spacing: -.09px;
+            color: #2b3940;
+        }
+
+        &--decription {
+            font-size: 1rem;
+            line-height: 1.625;
+            letter-spacing: -.08px;
+            color: #2b3940;
+            opacity: 0.8;
+        }
+
+        &__star-rating {
+            &--start {
+                &>label {
+                    font-size: 24px;
+                    color: #FFB906;
+                    position: relative;
+                    width: 1em;
+                    font-size: 30px;
+                    color: #FFD600;
+                    cursor: pointer;
+                    margin: 0;
+
+                    &::before {
+                        content: "★";
+                        position: absolute;
+                        opacity: 1
+                    }
+
+                    &:hover~label:before {
+                        opacity: 0 !important
+                    }
+                }
+
+                &>input {
+                    display: none
+                }
+
+                &>input:checked~label:before {
+                    opacity: 1
+                }
+
+                &:hover>input:checked~label:before {
+                    opacity: 0.4
+                }
+
+            }
+
+            &--decription {
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 19px;
+                color: #888888;
+            }
+        }
+    }
+}

@@ -1,0 +1,55 @@
+.offer-block {
+    position: relative;
+    padding: 20px;
+
+    .close {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        display: grid;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        place-items: center;
+        font-size: 28px;
+        background-color: white;
+
+        &:hover {
+            cursor: pointer;
+            color: rgb(206, 50, 50);
+        }
+    }
+}
+
+.offer__content {
+    &__heading {
+        margin-bottom: 16px;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 1.3125rem;
+        line-height: 1.62;
+        letter-spacing: -.21px;
+    }
+
+    input {
+        margin-bottom: 1rem;
+        width: 100%;
+        padding: 0.75rem 0.9375rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.88;
+        color: #6b6e6f;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #e5e5e5;
+        border-radius: 0.3125rem;
+        outline: none;
+    }
+    button{
+        margin-top: 1rem;
+        width: 100%;
+        @include createButton(12px, 24px, white, #00b074, #00b074);
+        text-transform: uppercase;
+        border: none;
+    }
+}

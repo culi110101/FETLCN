@@ -1,0 +1,185 @@
+.modal{
+    @include max-width-992{
+        padding-left: 16px!important;
+        padding-right: 16px;
+    }
+    @include max-width-768{
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+}
+.modal-body {
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-dialog {
+    display: grid;
+    place-items: center;
+    max-width: fit-content;
+    height: 100%;
+    @include max-width-768{
+        margin-left: auto;
+    margin-right: auto;
+    }
+}
+
+.modal-content {
+    width: fit-content;
+    height: fit-content;
+    border-radius: 16px;
+}
+.role-for-register{
+    display: grid;
+    place-items: center;
+    height: 255px;
+}
+
+.left-content {
+    background-color: #2b3940;
+    padding-top: 30px;
+    border-top-left-radius: 13px;
+    border-bottom-left-radius: 13px;
+
+    &__introduction {
+        &>p:first-child {
+            font-size: 2.125rem;
+            letter-spacing: -.34px;
+            font-weight: 700;
+            padding-bottom: 18px;
+        }
+
+        &>p:nth-child(2) {
+            font-size: 1rem;
+            line-height: 1.625;
+            letter-spacing: -.08px;
+        }
+
+        &__postjob-today,
+        &__company {
+            &--number {
+                font-size: 1.5rem;
+                font-weight: 700;
+                line-height: 1.5;
+                letter-spacing: -.24px;
+                padding-bottom: 0px;
+                margin-bottom: 4px;
+            }
+
+            &--decription {
+                font-size: 13px;
+                line-height: 2;
+                letter-spacing: .26px;
+                opacity: .5;
+                line-height: 1.4;
+            }
+        }
+    }
+}
+
+.right-content-for-register-freelancer,.right-content-for-register-employee {
+    display: grid;
+    place-items: center;
+    height: auto;
+
+    svg {
+        width: 150px;
+        height: auto;
+        margin-bottom: 2rem;
+    }
+
+    &__common {
+        width: 100%;
+        &__content{
+            label{
+                display: block !important;
+                font-size: 1rem;
+                line-height: 1;
+                letter-spacing: -.08px;
+                font-weight: 600;
+                color: #2b3940;
+                
+            }
+    
+            .form-input {
+                height: 3rem;
+                padding: 0.75rem 0.9375rem;
+                font-size: 1rem;
+                font-weight: 400;
+                line-height: 1.88;
+                color: #6b6e6f;
+                border-radius: 4px;
+                border: solid 1px #6b6e6f;
+                box-shadow: none;
+                width: 100%;
+            }
+            .form-input:focus-visible{
+                outline: none;
+            }
+            select,option {
+                width: 100%;
+                padding: 0.75rem 0.9375rem;
+                font-size: 1rem;
+                font-weight: 400;
+                line-height: 1.88;
+                color: #6b6e6f;
+                background-color: #fff;
+                background-clip: padding-box;
+                border: solid 1px #6b6e6f;
+                border-radius: 0.3125rem;
+                outline: none;
+            }
+        }
+    }
+}
+
+.form-label {
+    line-height: 1;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #2b3940
+}
+
+.btn-go-to-home {
+    width: 100%;
+    min-width: 160px;
+    height: 48px;
+    line-height: 36px;
+    color: #fff;
+    background-color: #00b074;
+    border-color: #00b074;
+}
+
+.btn-go-to-home:hover {
+    color: #00b074 !important;
+    background-color: white !important;
+    border-color: #00b074 !important;
+    border: solid 2px;
+}
+.btn-close-register{
+    width: 100%;
+    min-width: 160px;
+    height: 48px;
+    line-height: 36px;
+    color: white;
+    background-color: #c23737;
+    border-color: #c23737;
+}
+.btn-close-register:hover {
+    color: #c23737 !important;
+    background-color: white !important;
+    border-color: #c23737 !important;
+    border: solid 2px;}
+
+.register-btn {
+    @include createButton(12px, 24px, white, #00b074, #00b074);
+    text-transform: uppercase;
+    &:hover{
+        background-color: white !important;
+        color: #00b074 !important;
+        border-color:#00b074 !important;
+        width: 128.44px;
+        height: 50px;
+    }
+}

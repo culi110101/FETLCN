@@ -1,0 +1,81 @@
+.jobdetail {
+    padding-top: 7.5rem;
+    margin-bottom:4.5rem ;
+    &__content {
+        border-radius: 12px;
+        margin: auto;
+        max-width: 60rem;
+        background-color: white;
+
+        &__heading {
+            padding: 30px;
+            border-bottom: solid 1px #e1e4e6;
+
+            &__right--name {
+                font-size: 1rem;
+                margin-bottom: 1rem;
+                letter-spacing: .26px;
+                color: #2b3940;
+                opacity: .8;
+            }
+
+            &__left--date {
+                font-size: 1.5rem;
+                font-weight: 700;
+                line-height: 1.625;
+                letter-spacing: -.08px;
+                color: #adb4b7;
+            }
+        }
+
+        &__body {
+            padding: 30px;
+            p,
+            li {
+                font-size: 1rem;
+                line-height: 2.5;
+                letter-spacing: -.08px;
+                color: #2b3940 !important;
+            }
+            &__decription{
+                margin-bottom: 1.5rem;
+            }
+        }
+    }
+
+    .btn-apply {
+        @include createButton(12px, 24px, white, #00b074, #00b074);
+        border: none;
+    }
+
+    &__price {
+        display: flex;
+        justify-content: center;
+        margin-right: 1.5rem;
+
+        &--number {
+            font-weight: 700;
+            font-size: 1.25rem;
+            line-height: 1.5;
+            letter-spacing: -.24px;
+
+            color: #2b3940;
+
+            span {
+                color: #adb4b7;
+            }
+        }
+    }
+
+    &--timeforjob {
+        font-weight: 700;
+        font-size: 1.25rem;
+        line-height: 1.5;
+        letter-spacing: -.24px;
+        color: #2b3940;
+
+        span {
+            color: #adb4b7;
+        }
+    }
+}

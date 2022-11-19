@@ -1,0 +1,25 @@
+.pagination {
+    li {
+      margin-right: 8px;
+    }
+  
+    .page-item.active .page-link {
+      background-color: $Red-primary;
+    }
+  
+    .page-link {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 32px;
+      height: 32px;
+      border: none;
+      color: $Text;
+  
+      i {
+        font-size: 14px;
+        color: $Red-primary;
+      }
+    }
+  }
+  

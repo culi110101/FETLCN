@@ -1,0 +1,80 @@
+.slick-dots {
+    li,
+    button {
+        width: 12px !important;
+        height: 12px !important;
+        @include max-width-576 {
+            width: 10px !important;
+            height: 10px !important;
+        }
+    }
+
+    li {
+        button:before {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 1px solid $Red-primary;
+            border-radius: 50%;
+            opacity: 1 !important;
+        }
+
+        &.slick-active button:before {
+            background-color: $Red-primary;
+        }
+    }
+
+}
+
+.banner__carousel {
+    .slick-dots {
+        bottom: 8%;
+    }
+}
+
+.post__carousel {
+    .slick-dots {
+        bottom: -25px;
+    }
+    .slick-slide {
+        margin: 0 12px;
+    }
+}
+
+.service-list__item__slide {
+    .slick-slide {
+        margin: 0 12px;
+        
+        & > div {
+            margin-bottom: 24px;
+        }
+    }
+
+    .slick-list {
+        padding: 24px 0;
+    }
+}
+
+.prices-list__carousel {
+    .slick-slide {
+        margin: 0 12px;
+        
+        & > div {
+            margin-bottom: 24px;
+        }
+    }
+}
+
+.prices-item__carousel {
+    .slick-slide {
+        margin: 0 12px;
+        
+        & > div {
+            margin-bottom: 24px;
+        }
+    }
+
+    .slick-list {
+        padding-top: 24px;
+    }
+}
