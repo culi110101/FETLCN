@@ -7,15 +7,36 @@ import { useDispatch, useSelector } from 'react-redux';
 import avatarUser from '../../assets/img/avatar_user.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown,faBars } from '@fortawesome/free-solid-svg-icons'
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    const [info, setInfo] = useState({
+        auth: false
+    })
 
     const { user } = useSelector(state => state.user.getProfile)
 
     useEffect(() => {
         dispatch(getProfileAction())
     }, [])
+
+    useEffect(() => {
+        if (user){
+            setInfo({
+                ...info,
+                auth: true
+            })
+        }
+        else{
+            setInfo({
+                ...info,
+                auth: false
+            })
+        }
+    }, [user])
 
     const [isVisible, setIsVisible] = useState(true);
     const [height, setHeight] = useState(0);
@@ -43,6 +64,15 @@ const Header = () => {
         }
         heightToHideFrom = winScroll;
     };
+
+    const logout = () => {
+        navigate('/')
+        localStorage.removeItem('job')
+        setInfo({
+            ...info,
+            auth: false
+        })
+    }
     return (
         <div>
             {
@@ -66,7 +96,7 @@ const Header = () => {
                                             <li className="nav-handle__list__items--name">
                                                 <a className="p-0" href="article.detail">About Us</a>
                                             </li>
-                                            {user ? (
+                                            {info.auth ? (
                                                 <div className='user-block'>
                                                     <img src={avatarUser} />
                                                     <div className="selected-filter">
@@ -75,9 +105,9 @@ const Header = () => {
                                                         </a>
                                                         <div className='pt-3'>
                                                         <ul className="subnav">
-                                                            <li><a href="#">Profile</a></li>
-                                                            <li><a href="#">Manage</a></li>
-                                                            <li><a href="#">Logout</a></li>
+                                                            <li><div>Profile</div></li>
+                                                            <li><div>Manage</div></li>
+                                                            <li onClick={logout}><div>Logout</div></li>
                                                         </ul>
                                                         </div>
                                                     </div>

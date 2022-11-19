@@ -279,6 +279,61 @@ export const changeStatusSlice = createSlice({
     }
 })
 
+// get my jobs
+const initGetMyJobs = {
+    loading: false,
+    jobs: [],
+    categories: [],
+    applies: [],
+    totalPages: 0,
+    length: 0
+}
+
+export const getMyJobsAction = createAsyncThunk(
+    'get my jobs',
+    async ({num, page}) => {
+        try{
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('job')}`
+                }
+            }
+            const {data} = await axios.get(`${apiUrl}/job/myJobs?num=${num}&page=${page}&status=1`, config)
+            console.log(data)
+            return data
+        }
+        catch(error){
+            console.log(error)
+            return error.response.data
+        }
+    }
+)
+
+export const getMyJobsSlice = createSlice({
+    name: 'get my jobs',
+    initialState: initGetMyJobs,
+    extraReducers: (builder) => {
+        builder.addCase(getMyJobsAction.pending, (state) => {
+            state.loading = true
+        })
+        builder.addCase(getMyJobsAction.fulfilled, (state, data) => {
+            console.log(data)
+            state.loading = false
+            state.success = data.payload.success
+            state.jobs = data.payload.jobs
+            state.totalPages = data.payload.totalPages
+            state.length = data.payload.length
+            state.categories = data.payload.categories
+            state.applies = data.payload.applies
+        })
+        builder.addCase(getMyJobsAction.rejected, (state, data) => {
+            state.loading = false
+            state.success = false
+            state.message = data.payload.message
+        })
+    }
+})
+
 // reducer
 const jobReducer = combineReducers({
     createJob: createJobSlice.reducer,
@@ -286,7 +341,8 @@ const jobReducer = combineReducers({
     getJobs: getJobsSlice.reducer,
     editJob: editJobSlice.reducer,
     getJobsByCategory: getJobsByCategorySlice.reducer,
-    changeStatus: changeStatusSlice.reducer
+    changeStatus: changeStatusSlice.reducer,
+    getMyJobs: getMyJobsSlice.reducer
 })
 
 export default jobReducer

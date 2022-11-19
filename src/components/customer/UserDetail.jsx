@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClose } from '@fortawesome/free-solid-svg-icons'
 const UserDetail = ({freelancer}) => {
     const [show, setShow] = useState(false);
-
+    console.log(freelancer)
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     return (
@@ -17,7 +17,6 @@ const UserDetail = ({freelancer}) => {
             <div className="userdetail">
                 <div className="userdetail__heading" variant="primary" onClick={handleShow}>
                     <img className="userdetail__heading--avatar" src={Avatar}></img>
-                    {freelancer && (freelancer.name)}
                 </div>
 
                 <Modal
@@ -34,7 +33,7 @@ const UserDetail = ({freelancer}) => {
                                 </div>
                                 <div className='d-flex'>
                                     <div className='col-4 sticky px-3'>
-                                        <Introduction></Introduction>
+                                        {freelancer && <Introduction freelancer={freelancer}></Introduction>}
                                         <div className="d-flex justify-content-between">
                                             <Button variant="primary" className="btn-contact-post">
                                                 Contact
