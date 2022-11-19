@@ -2,7 +2,6 @@ import {createAsyncThunk, createSlice, combineReducers} from '@reduxjs/toolkit'
 import { apiUrl } from '../../common/consts'
 
 import axios from 'axios'
-import { registerEmployerSlice } from './employer'
 
 // create job
 const initStateCreateJob = {
@@ -101,7 +100,8 @@ export const findJobByIdSlice = createSlice({
 const initStateGetJobs = {
     loading: false,
     success: false,
-    jobs: []
+    jobs: [],
+    categories: []
 }
 
 export const getJobsAction = createAsyncThunk(
@@ -134,6 +134,7 @@ export const getJobsSlice = createSlice({
             state.loading = false
             state.success = data.payload.success
             state.jobs = data.payload.jobs
+            state.categories = data.payload.categories
         })
         builder.addCase(getJobsAction.rejected, (state, data) => {
             state.loading = false

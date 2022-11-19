@@ -12,7 +12,7 @@ import jobReducer from './entities/job'
 import searchReducer from './entities/search'
 import skillReducer from './entities/skill'
 import userSkillReducer from './entities/userSkill'
-
+import packageReducer from './entities/package'
 
 export const store = configureStore({
     reducer: {
@@ -27,7 +27,8 @@ export const store = configureStore({
         job: jobReducer,
         search: searchReducer,
         skill: skillReducer,
-        userSkill: userSkillReducer
+        userSkill: userSkillReducer,
+        package: packageReducer
     }
 })
 

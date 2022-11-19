@@ -1,19 +1,18 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-/* import { getCreditsAction } from '../../store/entities/credit' */
+import { getPackagesAction } from '../../store/entities/package'
 
 const AddMoney = () => {
 
     const dispatch = useDispatch()
 
-    /* const { credits } = useSelector(state => state.credit.getCredits) */
-    const credits = []
+    const {packages} = useSelector(state => state.package.getPackages)
 
 
     useEffect(() => {
-        /* dispatch(getCreditsAction(3)) */
-    }, [])
+        dispatch(getPackagesAction(3))
+    }, [dispatch])
 
 
     return (
@@ -22,15 +21,15 @@ const AddMoney = () => {
                 <h2 class="add-money--heading text-center">
                     POINTS CHANGE PRICE LIST
                     <div class="d-flex add-money__items">
-                        {credits && credits.map((credit, index) => (
+                        {packages && packages.map((pack, index) => (
                             <div key={index} class="col-lg-4 hang add-money__items__card">
                                 <div class="add-money__items__card__content mx-auto">
                                     <span class="add-money__items__card__content__icon">
                                         <i class="lp-medal d-flex align-items-center"></i>
                                     </span>
-                                    <p class="add-money__items__card__content--heading">{credit.name}</p>
+                                    <p class="add-money__items__card__content--heading">{pack.description}</p>
                                     <p class="add-money__items__card__content--price">
-                                        {credit.price}$ - {credit.points} points
+                                        {pack.price}$ - {pack.points} points
                                     </p>
                                     {/* <span class="add-money__items__card__content__decription">
                                         <p class="add-money__items__card__content__decription--content">

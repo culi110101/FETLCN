@@ -4,7 +4,7 @@ import { handleDate } from '../../common/lib';
 import { useNavigate } from 'react-router-dom';
 import { Pagination } from 'react-bootstrap'
 
-const JobItems = ({ job, category }) => {
+const JobItems = ({ job, categories }) => {
 
     const navigate = useNavigate()
 
@@ -18,7 +18,7 @@ const JobItems = ({ job, category }) => {
 
     return (
         <div className='w-100'>
-            {(job && category) && (
+            {(job && categories) && (
                 <div onClick={() => goJobItemPage(job.id)} className='jobitems pulse'>
                     <div className='row mb-3 mb-md-0 block-name'>
                         <div className='col-12 col-md-6'>
@@ -38,18 +38,22 @@ const JobItems = ({ job, category }) => {
                                 <i></i>
                                 {/* số tiền target của job */}
                                 <p className='jobitems__price--number'>
-                                    <span>{job.minPrice}</span>
+                                    {/* <span>{job.minPrice}</span>
                                     <span>-</span>
                                     <span>{job.maxPrice}</span>
                                     &nbsp;
-                                    Point
+                                    Point */}
+                                    <span>{job.price.toLocaleString()} $</span>
                                 </p>
                             </div>
                         </div>
                     </div>
                     <div className='row mb-3 mb-md-0'>
                         <div className='col-12 col-md-6 mb-2 mb-0'>
-                            <a className='jobitems--category text-capitalize'>{category.name}</a>
+                            {categories.map((category, index) => (
+                                <a key={index} className='jobitems--category text-capitalize'>{category.name}</a>
+                            ))}
+                            
                         </div>
                         <div className='col-12 col-md-6 mb-2 mb-0'>
                             <p className='jobitems--timeforjob'>
@@ -60,7 +64,7 @@ const JobItems = ({ job, category }) => {
                                 &nbsp;
                                 <span className='mx-2'>
                                     End day: &nbsp;
-                                    <span>{handleDate(job.endDate)}</span>
+                                    <span>{handleDate(job.expireDate)}</span>
                                 </span>
                             </p>
                         </div>
