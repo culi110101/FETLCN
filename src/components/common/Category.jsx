@@ -19,20 +19,21 @@ const Category = () => {
         backgroundColor:"rgba(71,67,219,.1)"
     },
     {
-        icon:faPenNib,
-        color:"#65efe3",
-        backgroundColor:"rgba(101,239,227,.1)"
-    },
-    {
-        icon:faMicrochip,
-        color:"#fa8557",
-        backgroundColor:"rgba(250,133,87,.1)"
-    },
-    {
         icon:faKeyboard,
         color:"#f71e3f",
         backgroundColor:"rgba(247,30,63,.1)"
-    }
+    },
+    {
+        icon:faMicrochip,
+        color:"#65efe3",
+        backgroundColor:"rgba(101,239,227,.1)"
+        
+    },
+    {
+        icon:faPenNib,
+        color:"#fa8557",
+        backgroundColor:"rgba(250,133,87,.1)"
+    },
 ]
 
     return (
@@ -60,7 +61,7 @@ const Category = () => {
                 </ul>
                 <div className='d-flex justify-content-center pulse-grow'>
                     <a href="#" className='category--explore'>
-                        Explore All
+                        search now
                     </a>
                 </div>
             </div>

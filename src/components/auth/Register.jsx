@@ -6,6 +6,8 @@ import Modal from "react-bootstrap/Modal";
 import { ReactComponent as Logo } from '../../assets/img/logo.svg';
 import swal from 'sweetalert';
 import { checkEmailFormat, checkLengthPassword } from "../../common/validation";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircleXmark } from '@fortawesome/free-solid-svg-icons'
 /* import { registerAction } from "../../store/entities/auth";
 import { getIntroAction } from "../../store/entities/job"; */
 
@@ -122,6 +124,9 @@ const Register = () => {
                 >
                     <Modal.Body>
                         <div className="d-flex common-content">
+                            <div onClick={handleClose}>
+                                <FontAwesomeIcon icon={faCircleXmark} className="close-btn" />
+                            </div>
                             <div className="left-content col-5">
                                 <div className="p-3 h-100 d-flex align-items-start flex-column">
                                     <div className="left-content__introduction mb-auto p-2">
@@ -131,7 +136,7 @@ const Register = () => {
                                     <div className="left-content__introduction d-flex p-4">
                                         <div className="col-6 ps-3 left-content__introduction__postjob-today">
                                             <p className="text-white left-content__introduction__postjob-today--number">
-                                                
+
                                             </p>
                                             <p className="text-white left-content__introduction__postjob-today--decription">
                                                 New jobs posted today
@@ -139,7 +144,7 @@ const Register = () => {
                                         </div>
                                         <div className="col-6 ps-3 left-content__introduction__company">
                                             <p className="text-white left-content__introduction__company--number">
-                                                
+
                                             </p>
                                             <p className="text-white left-content__introduction__company--decription">
                                                 New companies registered

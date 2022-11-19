@@ -5,6 +5,8 @@ import { getProfileAction } from '../../store/entities/user';
 import { ReactComponent as Logo } from '../../assets/img/logo.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import avatarUser from '../../assets/img/avatar_user.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronDown,faBars } from '@fortawesome/free-solid-svg-icons'
 
 const Header = () => {
     const dispatch = useDispatch()
@@ -30,7 +32,6 @@ const Header = () => {
         const winScroll = document.documentElement.scrollTop;
         setHeight(winScroll);
 
-        console.log("prev", heightToHideFrom, "scroll", winScroll);
         if (heightToHideFrom > winScroll) {
             document.getElementById("header").style.top = "0px";
 
@@ -66,7 +67,21 @@ const Header = () => {
                                                 <a className="p-0" href="article.detail">About Us</a>
                                             </li>
                                             {user ? (
-                                                <img src={avatarUser}/>
+                                                <div className='user-block'>
+                                                    <img src={avatarUser} />
+                                                    <div className="selected-filter">
+                                                        <a href="#">
+                                                        <FontAwesomeIcon icon={faChevronDown} />
+                                                        </a>
+                                                        <div className='pt-3'>
+                                                        <ul className="subnav">
+                                                            <li><a href="#">Profile</a></li>
+                                                            <li><a href="#">Manage</a></li>
+                                                            <li><a href="#">Logout</a></li>
+                                                        </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             ) : (
                                                 <li className="nav-handle__list__items--name">
                                                     <div className='m-2'>
@@ -81,7 +96,7 @@ const Header = () => {
                                     </div>
                                     <button className="d-block d-lg-none px-2 nav-handle__menu-btn" data-bs-toggle="offcanvas"
                                         data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                                        <i>menu</i>
+                                        <FontAwesomeIcon icon={faBars} />
                                     </button>
                                     <div className="offcanvas offcanvas-end menu-mobile" tabIndex="-1" id="offcanvasRight"
                                         aria-labelledby="offcanvasRightLabel">
