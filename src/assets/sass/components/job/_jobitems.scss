@@ -21,6 +21,7 @@
             letter-spacing: -.21px;
             color: #2b3940;
             font-weight: 700;
+            @include webkit-box(2)
         }
         
         &--decription {

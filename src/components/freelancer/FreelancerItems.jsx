@@ -1,63 +1,57 @@
 import React from 'react'
 import Avatar from '../../assets/img/avatar.png';
-import { handleDate } from '../../common/lib';
-import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 const FreelancerItems = () => {
-  return (
-    
-    <div className='w-100'>
-            {(job && category) && (
-                <div onClick={() => goJobItemPage(job.id)} className='freelanceritems pulse'>
-                    <div className='row mb-3 mb-md-0 block-name'>
-                        <div className='col-12 col-md-6'>
-                            <div className='d-flex'>
-                                <img className='freelanceritems--avatar' src={Avatar}></img>
-                                <div className='freelanceritems__headinfomation d-flex align-items-center'>
-                                    <div>
-                                        <p className='freelanceritems__headinfomation--header m-0'>{job.name}</p>
-                                        <p className='freelanceritems__headinfomation--decription m-0'>{job.description}</p>
-                                    </div>
+    return (
+
+        <div className='w-100'>
+            <div className='freelancer-items pulse'>
+                <div className='row mb-3 mb-md-0 block-name'>
+                    <div className='col-12 col-md-6'>
+                        <div className='d-flex'>
+                            <img className='freelancer-items--avatar' src={Avatar}></img>
+                            <div className='freelancer-items__headinfomation d-flex align-items-center'>
+                                <div>
+                                    <p className='freelancer-items__headinfomation--header m-0'>FREELANCER'S NAME</p>
+                                        <div className='freelancer-items__headinfomation--skill m-0'>SKILL:
+                                            <span>skill 1</span>,
+                                            <span>skill 2</span>,
+                                            <span>skill 3</span>,
+                                            <span>skill 1</span>,
+                                            <span>skill 2</span>,
+                                            <span>skill 3</span>,
+                                            <span>skill 1</span>,
+                                            <span>skill 2</span>,
+                                            <span>skill 3</span>
+                                        </div>
                                 </div>
                             </div>
                         </div>
-                        <div className='col-12 col-md-6'>
-                            <div className='d-flex freelanceritems__price'>
-                                {/* icon đô la */}
-                                <i></i>
-                                {/* số tiền target của job */}
-                                <p className='freelanceritems__price--number'>
-                                    <span>{job.minPrice}</span>
-                                    <span>-</span>
-                                    <span>{job.maxPrice}</span>
-                                    &nbsp;
-                                    Point
-                                </p>
-                            </div>
-                        </div>
                     </div>
-                    <div className='row mb-3 mb-md-0'>
-                        <div className='col-12 col-md-6 mb-2 mb-0'>
-                            <a className='freelanceritems--category text-capitalize'>{category.name}</a>
-                        </div>
-                        <div className='col-12 col-md-6 mb-2 mb-0'>
-                            <p className='freelanceritems--timeforjob'>
-                                <span className='mx-2'>
-                                    Start day: &nbsp;
-                                    <span>{handleDate(job.startDate)}</span>
-                                </span>
-                                &nbsp;
-                                <span className='mx-2'>
-                                    End day: &nbsp;
-                                    <span>{handleDate(job.endDate)}</span>
-                                </span>
-                            </p>
+                    <div className='col-12 col-md-6'>
+                        <div className='d-flex freelancer-items__rating'>
+                            <span>4/5</span>
+                            <FontAwesomeIcon icon={faStar} />
+                            <span>( Đã có <span>1120</span> đánh giá )</span>
                         </div>
                     </div>
                 </div>
-            )}
+                <div className='row mb-3 mb-md-0'>
+                    <div className='mb-2 mb-0'>
+                        <div className='freelancer-items__decription text-capitalize'>
+                            About me:
+                            <p>
+                            FREELANCER'S DECRIPTIONs sssssssssssssssss ssss sssssssssss sss ssssssss ssssss sssssssss ssssss sss sssssssss sssssssss
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
-  )
+    )
 }
 
 export default FreelancerItems

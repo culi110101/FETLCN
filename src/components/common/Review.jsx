@@ -1,5 +1,7 @@
 import React from 'react'
 import Avatar from '../../assets/img/avatar.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 const Review = () => {
     return (
@@ -11,7 +13,11 @@ const Review = () => {
                         <div >
                             <h3 className='review__content__heading--name'>David Henricks</h3>
                             <div className="review__content__heading__star-rating--start">
-                                <label htmlFor="start1" title="1 start">☆</label>
+                                <FontAwesomeIcon icon={faStar} />
+                                <FontAwesomeIcon icon={faStar} />
+                                <FontAwesomeIcon icon={faStar} />
+                                <FontAwesomeIcon icon={faStar} />
+
                             </div>
                         </div>
                     </div>

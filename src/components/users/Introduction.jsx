@@ -1,10 +1,13 @@
 import React from 'react'
 import Avatar from '../../assets/img/avatar.png'
+import Status from "../common/Status";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 const Introduction = ({ user }) => {
     return (
         <div>
-            
+
             {user && (
                 <div className='profileuser__information'>
                     <div className='profileuser__information__heading'>
@@ -33,13 +36,17 @@ const Introduction = ({ user }) => {
                             <p className='profileuser__information__detail--header my-2'>Experience</p>
                             <p className='profileuser__information__detail--decription'>3 years in software development</p>
                         </div>
-                        <div className="profileuser__information__detail__star-rating">
-                            <div className="d-flex justify-content-center profileuser__information__detail__star-rating--start">
-                                <label htmlFor="start1" title="1 start">☆</label>
+                        <div className="profileuser__information__detail__star-rating my-2">
+                            <div className='d-flex freelancer-items__rating'>
+                                <span>4/5</span>
+                                <FontAwesomeIcon icon={faStar} />
+                                <span>( Đã có <span>1120</span> đánh giá )</span>
                             </div>
-                            <div className="text-center profileuser__information__detail__star-rating--decription">
-                                4/5 ( Đã có 101 đánh giá )
-                            </div>
+                        </div>
+                        <div className="profileuser__information__detail__star-rating my-2">
+                            <Status
+                                status={false}
+                            ></Status>
                         </div>
 
                     </div>

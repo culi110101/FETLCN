@@ -6,6 +6,7 @@ import Partner from '../components/common/Partner'
 import Category from '../components/common/Category'
 import FeaturedJobs from '../components/job/FeaturedJobs'
 import AddMoney from '../components/payment/AddMoney'
+import FeaturedFreelancer from '../components/users/FeaturedFreelancer'
 
 
 
@@ -16,7 +17,8 @@ const Auth = ({authRoute}) => {
             <Baner />
             <Partner></Partner>
             <Category></Category>
-            <FeaturedJobs></FeaturedJobs>
+            {/* <FeaturedJobs></FeaturedJobs> */}
+            <FeaturedFreelancer></FeaturedFreelancer>
             <AddMoney></AddMoney>
         </div>
     )

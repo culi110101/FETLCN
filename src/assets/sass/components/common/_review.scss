@@ -21,39 +21,14 @@
             &__star-rating {
                 &--start {
 
-                    &>label {
-                        color: #FFB906;
-                        position: relative;
-                        width: 1em;
-                        line-height: 30px;
-                        font-size: 30px;
-                        color: #FFD600;
-                        cursor: pointer;
-                        margin: 0;
+                    display: flex;
+        justify-content: center;
 
-                        &::before {
-                            content: "★";
-                            position: absolute;
-                            opacity: 1;
-                            line-height: 30px;
-                        }
-
-                        &:hover~label:before {
-                            opacity: 0 !important
-                        }
-                    }
-
-                    &>input {
-                        display: none
-                    }
-
-                    &>input:checked~label:before {
-                        opacity: 1
-                    }
-
-                    &:hover>input:checked~label:before {
-                        opacity: 0.4
-                    }
+        svg {
+            margin: 0px 6px;
+            font-size: 24px;
+            color: rgb(245, 237, 121);
+        }
 
                 }
             }

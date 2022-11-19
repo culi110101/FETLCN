@@ -14,7 +14,6 @@ const FeaturedJobs = () => {
 
 
   useEffect(() => {
-    console.log("ok")
     dispatch(getJobsAction({num: 3, page:1}))
   }, [dispatch])
 
@@ -29,7 +28,7 @@ const FeaturedJobs = () => {
         </div>
       </div>
       <ul>
-        {(jobs && categories) && jobs.map((item, index) => (
+        {jobs && jobs.map((item, index) => (
           <li key={index} className='text-center'>
             <JobItems job={item} categories={categories[index]}></JobItems>
           </li>
