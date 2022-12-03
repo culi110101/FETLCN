@@ -1,7 +1,15 @@
 import React from 'react'
 import FreelancerItems from '../freelancer/FreelancerItems'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect, useState } from 'react'
+import { getFreelancersAction } from '../../store/entities/freelancer'
 
 const FeaturedFreelancer = () => {
+  const dispatch = useDispatch()
+  const {freelancers, freelancersSkills, numComments} = useSelector(state => state.freelancer.getFreelancers)
+  useEffect(() => {
+    dispatch(getFreelancersAction())
+  }, [dispatch])
   return (
     <div className='container featuredjobs'>
       <div className='d-flex justify-content-center'>
@@ -22,15 +30,18 @@ const FeaturedFreelancer = () => {
           <li className='d-flex justify-content-center'>
             <JobItems></JobItems>
           </li> */}
-          <li className='text-center'>
+          {freelancers.length != 0 && freelancers.map((freelancer, index) => (
+            <li key={freelancer.id} className='text-center'>
+              <FreelancerItems freelancer={freelancer} skills={freelancersSkills[index]} numComment={numComments[index]}></FreelancerItems>
+            </li>
+          ))}
+
+          {/* <li className='text-center'>
             <FreelancerItems></FreelancerItems>
           </li>
           <li className='text-center'>
             <FreelancerItems></FreelancerItems>
-          </li>
-          <li className='text-center'>
-            <FreelancerItems></FreelancerItems>
-          </li>
+          </li> */}
       </ul>
     </div>
   )
