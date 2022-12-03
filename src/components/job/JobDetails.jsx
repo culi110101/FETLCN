@@ -89,13 +89,8 @@ const JobDetails = () => {
                                                 {job.description}
                                             </p>
                                         </div>
-                                        <div className='jobdetail__content__body__tast mb-5'>
-                                            <ul>
-                                                <h4 className=' mb-4'>What you will be doing:</h4>
-                                                {/* {tasks && tasks.map((task, index) => (
-                                                    <li key={index}>{task.name}</li>
-                                                ))} */}
-                                            </ul>
+                                        <div className='jobdetail__content__body__apply mb-5'>
+                                            <button>apply</button>
                                         </div>
                                     </div>
                                 </div>

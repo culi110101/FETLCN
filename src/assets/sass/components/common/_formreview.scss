@@ -1,0 +1,39 @@
+.rate {
+    &__content__star-rating {
+        &--start {
+            &>label {
+                font-size: 24px;
+                color: #FFB906;
+                position: relative;
+                width: 1em;
+                font-size: 30px;
+                color: #FFD600;
+                cursor: pointer;
+                margin: 0;
+
+                &::before {
+                    content: "★";
+                    position: absolute;
+                    opacity: 1
+                }
+
+                &:hover~label:before {
+                    opacity: 0 !important
+                }
+            }
+
+            &>input {
+                display: none
+            }
+
+            &>input:checked~label:before {
+                opacity: 1
+            }
+
+            &:hover>input:checked~label:before {
+                opacity: 0.4
+            }
+
+        }
+    }
+}

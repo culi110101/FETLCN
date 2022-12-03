@@ -14,7 +14,7 @@ function App() {
       <Routes>
         <Route path='/search' element={<SearchList></SearchList>}/>
         <Route path='/items' element={<JobItemsLayer></JobItemsLayer>}/>
-        <Route path='/profile' element={<ProfileUser></ProfileUser>}/>
+        <Route path='/profilefreelancer' element={<ProfileUser></ProfileUser>}/>
         <Route path='/manageforcustomer' element={<ManageForCustomer></ManageForCustomer>}/>
         <Route path='/updateprofile' element={<UpdateInformation></UpdateInformation>}/>
         <Route path='*' element={<Auth></Auth>}/>
