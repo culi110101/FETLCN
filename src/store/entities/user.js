@@ -80,11 +80,12 @@ export const updateProfileAction = createAsyncThunk(
                     Authorization: `Bearer ${localStorage.getItem('job')}`
                 }
             }
-            const {data} = await axios.put(`${apiUrl}/user/profile`, profileData, config)
+            const {data} = await axios.put(`${apiUrl}/users/profile`, profileData, config)
             console.log(data)
             return data
         }
         catch(error){
+            console.log(error)
             return error.response.data
         }
     }

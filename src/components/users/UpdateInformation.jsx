@@ -4,12 +4,17 @@ import Modal from "react-bootstrap/Modal";
 import { useDispatch, useSelector } from 'react-redux'
 import avatarUser from '../../assets/img/avatar_user.png'
 import Carousel from 'react-bootstrap/Carousel';
-/* import { editProfileAction } from "../../store/entities/user"; */
+import { getProfileAction } from "../../store/entities/user";
+import { updateProfileAction } from "../../store/entities/user";
+import { editFreelancerAction } from "../../store/entities/freelancer";
+import swal from 'sweetalert'
 
-const UpdateInformation = ({ user }) => {
+
+const UpdateInformation = () => {
     const dispatch = useDispatch()
     const [show, setShow] = useState(false);
-
+    const {user, freelancer} = useSelector(state => state.user.getProfile)
+    const {success} = useSelector(state => state.user.updateProfile)
     const [info, setInfo] = useState({
         firstName: '',
         lastName: '',
@@ -17,24 +22,31 @@ const UpdateInformation = ({ user }) => {
         phone: '',
         address: '',
         experience: '',
-        introduction: ''
+        introduction: '',
+        gender: 'Male'
     })
 
+    useEffect(() => {
+        dispatch(getProfileAction())
+    }, [dispatch])
 
     useEffect(() => {
-        /* if (user){
+        if (user && freelancer){
+            console.log(user)
             setInfo({
                 ...info,
-                firstName: user.name,
-                lastName: user.name,
                 phone: user.phone,
                 address: user.address,
                 email: user.email,
                 experience: user.experience,
-                introduction: user.introduction
+                introduction: user.introduction,
+                firstName: freelancer.firstName,
+                lastName: freelancer.lastName,
+                gender: freelancer.gender
             })
-        } */
-    }, [])
+        }
+        
+    }, [user, freelancer])
 
     const getInfo = (event) => {
         setInfo({
@@ -44,16 +56,24 @@ const UpdateInformation = ({ user }) => {
     }
 
     const submitUpdate = () => {
-        console.log(info)
-        /* dispatch(editProfileAction({
-            name: info.firstName + " " + info.lastName,
-            email: info.email,
-            phone: info.phone,
-            address: info.address,
-            experience: info.experience,
-            introduction: info.introduction
-        })) */
+        dispatch(updateProfileAction(info))
+        dispatch(editFreelancerAction({
+            firstName: info.firstName,
+            lastName: info.lastName,
+            gender: info.gender
+        }))
     }
+
+    useEffect(() => {
+        if (success){
+            swal({
+                title: "Success",
+                text: "Update Profile Successfully",
+                icon: "success",
+                dangerMode: false,
+            })
+        }
+    }, [success])
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -85,9 +105,9 @@ const UpdateInformation = ({ user }) => {
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Gender </label>
-                    <select className="dropdown w-100" name="category" onChange={getInfo} defaultValue={'0'}>
-                        <option className="w-100" value="0" selected>Gender</option>
-                        <option className="w-100" value="0" selected>Male</option>
+                    <select value={info.gender} className="dropdown w-100" name="category" onChange={getInfo} defaultValue={'0'}>
+                        <option className="w-100" value="Male" selected>Male</option>
+                        <option className="w-100" value="Female" selected>Female</option>
                     </select>
                 </div>
                 <div className="mb-3">
