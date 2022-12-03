@@ -12,23 +12,15 @@ import FeaturedFreelancer from '../components/users/FeaturedFreelancer'
 
 const Auth = ({authRoute}) => {
 
-    let body = (
-        <div className='body'>
-            <Baner />
-            <Partner></Partner>
-            <Category></Category>
-            {/* <FeaturedJobs></FeaturedJobs> */}
-            <FeaturedFreelancer></FeaturedFreelancer>
-            <AddMoney></AddMoney>
-        </div>
-    )
-
   return (
-    <div>
-        <Header></Header>
-      {body}
-      <Footer></Footer>
-    </div>
+    <>
+       <Baner />
+        <Partner />
+        <Category />
+        {/* <FeaturedJobs></FeaturedJobs> */}
+        <FeaturedFreelancer />
+        <AddMoney />
+    </>
   )
 }
 

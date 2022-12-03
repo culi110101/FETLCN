@@ -8,9 +8,9 @@ const initStateGetProfile = {
     loading: false,
     success: false,
     message: '',
-    user: {},
-    freelancer: {},
-    employer: {}
+    user: null,
+    freelancer: null,
+    employer: null
 }
 
 export const getProfileAction = createAsyncThunk(
@@ -19,10 +19,10 @@ export const getProfileAction = createAsyncThunk(
         try{
             const config = {
                 headers: {
-                    Authorization: `Bearer ${localStorage.getItem('job')}`
+                    Authorization: `Bearer ${JSON.parse(localStorage.getItem('job'))}`
                 }
             }
-            const {data} = await axios.get(`${apiUrl}/users/profile`, config)
+            const { data } = await axios.get(`${apiUrl}/users/profile`, config);
             if (data.user){
                 if (data.employer){
                     localStorage.setItem('role', "Employer")
@@ -48,6 +48,22 @@ export const getProfileSlice = createSlice({
             state.loading = true
         })
         builder.addCase(getProfileAction.fulfilled, (state, data) => {
+            const { user, freelancer, employer } = data.payload;
+            
+            const userData = {
+                id: user.id,
+                email: user.email,
+                image: user.image
+            };
+
+            if (employer) {
+                userData.name = employer.companyName;
+            } else {
+                userData.name = freelancer.firstName + freelancer.lastName;
+            }
+
+            localStorage.setItem('user', JSON.stringify(userData));
+            
             state.loading = false
             state.success = data.payload.success
             state.user = data.payload.user

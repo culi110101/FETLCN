@@ -6,23 +6,29 @@ import { useSearchParams } from 'react-router-dom'
 import { useEffect } from 'react';
 import { handleDate } from '../../common/lib';
 import Offer from '../common/Offer';
-/* import { getTasksByJobAction } from '../../store/entities/task'; */
+import { addAppliedAction } from '../../store/entities/applied';
 import { findJobByIdAction } from '../../store/entities/job';
+import { useNavigate } from 'react-router-dom';
 const JobDetails = () => {
     const dispatch = useDispatch()
-
+    const navigate = useNavigate()
     let [searchParams, setSearchParams] = useSearchParams();
 
     const {job} = useSelector(state => state.job.findJobById)
 
     useEffect(() => {
+        if (localStorage.getItem('role') == "Employer"){
+            navigate('/')
+        }
         const id = searchParams.get('id')
         if (id) {
             dispatch(findJobByIdAction(id))
         }
     }, [dispatch])
 
-
+    const addApplied = () => {
+        dispatch(addAppliedAction({job: searchParams.get('id')}))
+    }
 
     return (
         <div>
@@ -90,7 +96,7 @@ const JobDetails = () => {
                                             </p>
                                         </div>
                                         <div className='jobdetail__content__body__apply mb-5'>
-                                            <button>apply</button>
+                                            <button onClick={addApplied}>apply</button>
                                         </div>
                                     </div>
                                 </div>
