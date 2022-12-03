@@ -52,11 +52,9 @@ const ProfileUser = () => {
     )
 
     return (
-        <div>
-            <Header></Header>
+        <>
             {body}
-            <Footer></Footer>
-        </div>
+        </>
     )
 }
 

@@ -1,5 +1,7 @@
 import {createAsyncThunk, createSlice, combineReducers} from '@reduxjs/toolkit'
-import { apiUrl } from '../../common/consts'
+import { apiUrl, ACTION_STATUS } from '../../common/consts'
+
+import api from '../api';
 
 import axios from 'axios'
 
@@ -17,7 +19,7 @@ export const loginAction = createAsyncThunk(
             const {data} = await axios.post(`${apiUrl}/account/login`, loginData)
             console.log(data)
             if (data.success){
-                localStorage.setItem('job', data.accessToken)
+                localStorage.setItem('job', JSON.stringify(data.accessToken));
             }
             return data
         }
@@ -37,7 +39,8 @@ export const loginSlice = createSlice({
         })
         builder.addCase(loginAction.fulfilled, (state, data) => {
             state.loading = false
-            state.success = data.payload.success
+            state.success = data.payload.success;
+            localStorage.setItem('streamToken', JSON.stringify(data.payload.streamToken));
         })
         builder.addCase(loginAction.rejected, (state, data) => {
             state.loading = false
@@ -86,12 +89,63 @@ export const changePasswordSlice = createSlice({
             state.message = data.payload.message
         })
     }
+});
+
+
+const initialGetCurrentUserState = {
+    status: ACTION_STATUS.IDLE,
+    user: null,
+    errorMessage: ''
+};
+
+export const getCurrentUser = createAsyncThunk(
+    'auth/getCurrentUser',
+    async () => {
+        try {
+            const { data } = await api.get('/users/profile');
+            console.log(data);
+
+            return data;
+        }
+        catch (error) {
+            console.log(error);
+            const message = (error.response && error.response.data && error.response.data.message) 
+                || error.message || error.toString();
+
+            return message;
+        }
+    }
+);
+
+const getCurrentUserSlice = createSlice({
+    name: 'auth/getCurrentUser',
+    initialState: initialGetCurrentUserState,
+    reducers: {
+
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(getCurrentUser.pending, (state, action) => {
+                state.status = ACTION_STATUS.LOADING;
+            })
+            .addCase(getCurrentUser.fulfilled, (state, action) => {
+                state.status = ACTION_STATUS.SUCCESSEED;
+                state.user = action.payload.user;
+                localStorage.setItem('user', JSON.stringify(action.payload.user));
+            })
+            .addCase(getCurrentUser.rejected, (state, action) => {
+                state.status = ACTION_STATUS.FAILED;
+                state.errorMessage = action.payload.error;
+            })
+    }
 })
+
 
 // reducers
 const accountReducer = combineReducers({
     login: loginSlice.reducer,
-    changePassword: changePasswordSlice.reducer
+    changePassword: changePasswordSlice.reducer,
+    currentUser: getCurrentUserSlice.reducer
 })
 
 export default accountReducer
