@@ -10,8 +10,8 @@ import FormReview from '../components/common/FormReview'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProfileAction } from '../store/entities/user'
 import { useEffect } from 'react'
-
-
+import {Button} from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 
 const ProfileUser = () => {
@@ -29,6 +29,7 @@ const ProfileUser = () => {
                     <div className='d-block d-md-flex'>
                         <div className='col-12 col-md-4 sticky'>
                             {user && <Introduction user={user}></Introduction>}
+                            {user && <Button><Link className='text-light' to="/updateprofile">Setting</Link></Button>}
                             {user && <UpdateInformation user={user}></UpdateInformation>}
                         </div>
                         <div className='col-12 col-md-8 px-md-3'>

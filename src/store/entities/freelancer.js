@@ -62,10 +62,11 @@ export const editFreelancerAction = createAsyncThunk(
                     Authorization: `Bearer ${localStorage.getItem('job')}`
                 }
             }
-            const {data} = await axios.put(`${apiUrl}/employer/edit`, config, employerData)
+            const {data} = await axios.put(`${apiUrl}/freelancer/edit`, employerData, config)
             return data
         }
         catch(error){
+            console.log(error)
             return error.response.data
         }
     }
