@@ -20,11 +20,12 @@ export const addAppliedAction = createAsyncThunk(
                     Authorization: `Bearer ${localStorage.getItem('job')}`
                 }
             }
-            const {data} = await axios.post(`${apiUrl}/applied/add`, config, appliedData)
+            const {data} = await axios.post(`${apiUrl}/applied/add`,  appliedData, config)
             console.log(data)
             return data
         }
         catch(error){
+            console.log(error)
             return error.response.data
         }
     }

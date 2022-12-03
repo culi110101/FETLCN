@@ -6,11 +6,12 @@ import Overview from '../components/users/Overview'
 import UpdateInformation from '../components/users/UpdateInformation'
 import Review from '../components/common/Review'
 import Contact from '../components/common/Contact'
+import FormReview from '../components/common/FormReview'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProfileAction } from '../store/entities/user'
 import { useEffect } from 'react'
-
-
+import {Button} from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 
 const ProfileUser = () => {
@@ -28,14 +29,15 @@ const ProfileUser = () => {
                     <div className='d-block d-md-flex'>
                         <div className='col-12 col-md-4 sticky'>
                             {user && <Introduction user={user}></Introduction>}
+                            {user && <Button><Link className='text-light' to="/updateprofile">Setting</Link></Button>}
                             {user && <UpdateInformation user={user}></UpdateInformation>}
                         </div>
                         <div className='col-12 col-md-8 px-md-3'>
                             <div className='profileuser-content'>
                                 <Overview></Overview>
                                 <div className='profileuser-content__contact'>
-                                    <p className='profileuser-content__contact--heading'>Leave me your info</p>
-                                    {user && (<Contact user={user}></Contact>)}
+                                    <p className='profileuser-content__contact--heading'>Leave me your review</p>
+                                    {user && (<FormReview user={user}></FormReview>)}
                                 </div>
                             </div>
                                 <div className='profileuser-content__review'>

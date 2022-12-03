@@ -19,7 +19,6 @@ export const registerFreelancerAction = createAsyncThunk(
                 }
             }
             const {data} = await axios.post(`${apiUrl}/employer/register`, config, freelancerData)
-            console.log(data)
             return data
         }
         catch(error){
@@ -63,11 +62,11 @@ export const editFreelancerAction = createAsyncThunk(
                     Authorization: `Bearer ${localStorage.getItem('job')}`
                 }
             }
-            const {data} = await axios.put(`${apiUrl}/employer/edit`, config, employerData)
-            console.log(data)
+            const {data} = await axios.put(`${apiUrl}/freelancer/edit`, employerData, config)
             return data
         }
         catch(error){
+            console.log(error)
             return error.response.data
         }
     }
@@ -109,7 +108,6 @@ export const getInfoFreelancerAction = createAsyncThunk(
                 }
             }
             const {data} = await axios.get(`${apiUrl}/freelancer/info?id=${id}`)
-            console.log(data)
             return data
         }
         catch(error){
@@ -139,11 +137,63 @@ export const getInfoFreelancerSlice = createSlice({
     }
 })
 
+
+// get freelancers
+const initStateGetFreelancers = {
+    loading: false,
+    freelancers: [],
+    freelancersSkills: [],
+    numComments: []
+}
+
+export const getFreelancersAction = createAsyncThunk(
+    'get freelancers',
+    async () => {
+        try{
+            /* const config = {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('job')}`
+                }
+            } */
+            const {data} = await axios.get(`${apiUrl}/freelancer`)
+            console.log("doing")
+            console.log(data)
+            return data
+        }
+        catch(error){
+            console.log(error)
+            return error.response.data
+        }
+    }
+)
+
+export const getFreelancersSlice = createSlice({
+    name: 'get freelancers',
+    initialState: initStateGetFreelancers,
+    extraReducers: (builder) => {
+        builder.addCase(getFreelancersAction.pending, (state) => {
+            state.loading = true
+        })
+        builder.addCase(getFreelancersAction.fulfilled, (state, data) => {
+            state.loading = false
+            state.freelancers = data.payload.freelancers
+            state.freelancersSkills = data.payload.freelancersSkills
+            state.numComments = data.payload.numComments
+        })
+        builder.addCase(getFreelancersAction.rejected, (state, data) => {
+            state.loading = false
+            state.success = false
+            state.message = data.payload.message
+        })
+    }
+})
+
 // reducer
 const freelancerReducer = combineReducers({
     registerFreelancer: registerFreelancerSlice.reducer,
     editFreelancer: editFreelancerSlice.reducer,
-    getInfoFreelancer: getInfoFreelancerSlice.reducer
+    getInfoFreelancer: getInfoFreelancerSlice.reducer,
+    getFreelancers: getFreelancersSlice.reducer
 })
 
 export default freelancerReducer
