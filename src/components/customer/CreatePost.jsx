@@ -92,12 +92,8 @@ const CreatePost = () => {
                             <div className="mb-3 w-100 block-price">
                                 <div className="d-flex">
                                     <div className="col-6 mb-3 pe-3">
-                                        <label className="form-label">Limited Price</label>
-                                        <input name='minPrice' onChange={getInfo} className="form-input" type="number" placeholder="Limited Price" />
-                                    </div>
-                                    <div className="col-6 mb-3">
-                                        <label className="form-label">Max Price</label>
-                                        <input name='maxPrice' onChange={getInfo} className="form-input" type="number" placeholder="Max Price" />
+                                        <label className="form-label">Price</label>
+                                        <input name='minPrice' className="form-input" type="number" placeholder="Limited Price" />
                                     </div>
                                 </div>
                             </div>

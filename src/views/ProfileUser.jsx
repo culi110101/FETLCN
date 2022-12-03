@@ -6,6 +6,7 @@ import Overview from '../components/users/Overview'
 import UpdateInformation from '../components/users/UpdateInformation'
 import Review from '../components/common/Review'
 import Contact from '../components/common/Contact'
+import FormReview from '../components/common/FormReview'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProfileAction } from '../store/entities/user'
 import { useEffect } from 'react'
@@ -34,8 +35,8 @@ const ProfileUser = () => {
                             <div className='profileuser-content'>
                                 <Overview></Overview>
                                 <div className='profileuser-content__contact'>
-                                    <p className='profileuser-content__contact--heading'>Leave me your info</p>
-                                    {user && (<Contact user={user}></Contact>)}
+                                    <p className='profileuser-content__contact--heading'>Leave me your review</p>
+                                    {user && (<FormReview user={user}></FormReview>)}
                                 </div>
                             </div>
                                 <div className='profileuser-content__review'>
