@@ -151,9 +151,7 @@ const SearchList = () => {
 
     return (
         <div>
-            <Header></Header>
             {body}
-            <Footer></Footer>
         </div>
     )
 }
